@@ -7,6 +7,7 @@ namespace Game.Player
 {
     public interface IPlayer
     {
+        void AddVelocityToPlayer(Vector2 direction);
         void AddItemToHand(IPickable item, HandType handType);
     }
 

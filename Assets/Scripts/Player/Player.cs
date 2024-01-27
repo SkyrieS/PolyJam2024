@@ -51,6 +51,11 @@ namespace Game.Player
             }
         }
 
+        public void AddVelocityToPlayer(Vector2 direction)
+        {
+            playerMovement.AddVelocity(direction);
+        }
+
         public void AddItemToHand(IPickable item, HandType handType)
         {
             if (handType.Equals(HandType.Left) && leftHandItem == null)

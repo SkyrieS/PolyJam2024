@@ -5,20 +5,20 @@ using UnityEngine;
 
 namespace Game.Items
 {
-    public class RollingPin : BaseItem
+    public class RollingPinItem : BaseItem
     {
         [SerializeField] private float hitStrenght;
-        [SerializeField] private Collider2D pickupCollider;
-        [SerializeField] private Collider2D hitCollider;
+        [SerializeField] private Collider2D pickupTriggerCollider;
+        [SerializeField] private Collider2D hitTriggerCollider;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (IsHeld)
             {
-                if (collision.TryGetComponent(out PlayerMovement playerController))
+                if (collision.TryGetComponent(out IPlayer player) && player != ParentPlayer)
                 {
                     Vector2 direction = (transform.position - collision.transform.position).normalized;
-                    playerController.AddVelocity(-direction * hitStrenght);
+                    player.AddVelocityToPlayer(-direction * hitStrenght);
                 }
             }
         }
@@ -26,15 +26,15 @@ namespace Game.Items
         public override void PickItem(IPlayer player, HandType handType)
         {
             base.PickItem(player, handType);
-            pickupCollider.enabled = false;
-            hitCollider.enabled = true;
+            pickupTriggerCollider.enabled = false;
+            hitTriggerCollider.enabled = true;
         }
 
         public override void DropItem()
         {
             base.DropItem();
-            pickupCollider.enabled = true;
-            hitCollider.enabled = false;
+            pickupTriggerCollider.enabled = true;
+            hitTriggerCollider.enabled = false;
         }
     } 
 }

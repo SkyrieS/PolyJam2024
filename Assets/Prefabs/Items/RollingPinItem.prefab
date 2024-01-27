@@ -50,9 +50,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemRigidbody2D: {fileID: 7683822387505624371}
+  itemCollider: {fileID: 7946209477449657335}
   hitStrenght: 15
-  pickupCollider: {fileID: 5169916437521629362}
-  hitCollider: {fileID: 1308655264159179686}
+  pickupTriggerCollider: {fileID: 5169916437521629362}
+  hitTriggerCollider: {fileID: 1308655264159179686}
 --- !u!50 &7683822387505624371
 Rigidbody2D:
   serializedVersion: 4
