@@ -24,7 +24,7 @@ namespace Game.Items
             itemCollider.enabled = false;
             isHeld = true;
             parentPlayer = player;
-            player.AddItemToHand(this, handType);
+            //player.AddItemToHand(this, handType);
         }
 
         public virtual void DropItem()

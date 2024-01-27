@@ -7,8 +7,14 @@ namespace Game.Player
 {
     public interface IPlayer
     {
-        void AddVelocityToPlayer(Vector2 direction);
-        void AddItemToHand(IPickable item, HandType handType);
+        PlayerType Type { get; }
+    }
+
+    public enum PlayerType
+    {
+        None,
+        PlayerOne,
+        PlayerTwo
     }
 
     public enum HandType
