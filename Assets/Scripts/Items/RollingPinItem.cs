@@ -13,14 +13,14 @@ namespace Game.Items
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (IsHeld)
-            {
-                if (collision.TryGetComponent(out IPlayer player) && player != ParentPlayer)
-                {
-                    Vector2 direction = (transform.position - collision.transform.position).normalized;
-                    player.AddVelocityToPlayer(-direction * hitStrenght);
-                }
-            }
+            //if (IsHeld)
+            //{
+                //if (collision.TryGetComponent(out IPlayer player) && player != ParentPlayer)
+               // {
+                    //Vector2 direction = (transform.position - collision.transform.position).normalized;
+                    //player.AddVelocityToPlayer(-direction * hitStrenght);
+                //}
+            //}
         }
 
         public override void PickItem(IPlayer player, HandType handType)
