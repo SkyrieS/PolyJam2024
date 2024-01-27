@@ -15,7 +15,7 @@ public class PlayerHandMovement : MonoBehaviour
     private Vector2 _hitVelocity;
     private Quaternion _rotationTarget;
 
-    private float currentAngle;
+    public float currentAngle;
     public bool comingBack;
 
     public Rigidbody2D PlayerRigidbody2D { get { return playerRigidbody2D; } }
@@ -23,6 +23,8 @@ public class PlayerHandMovement : MonoBehaviour
     private void Start()
     {
         RefreshRot();
+        Debug.Log(playerRigidbody2D.centerOfMass);
+        playerRigidbody2D.centerOfMass = Vector2.zero;
     }
 
     public void RefreshRot()

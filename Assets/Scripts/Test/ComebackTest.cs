@@ -5,6 +5,7 @@ using System.Linq;
 
 public class ComebackTest : MonoBehaviour
 {
+    public List<Collider2D> collidersToDisable;
     public PlayerHandMovement handMovement;
     public HandLineDrawer drawer;
 
@@ -29,6 +30,9 @@ public class ComebackTest : MonoBehaviour
 
         drawer.comingBack = true;
         handMovement.comingBack = true;
+
+        foreach (var col in collidersToDisable)
+            col.enabled = false;
     }
 
     private void Update()
@@ -54,8 +58,13 @@ public class ComebackTest : MonoBehaviour
             {
                 drawer.comingBack = false;
                 handMovement.comingBack = false;
+                foreach (var col in collidersToDisable)
+                    col.enabled = true;
+
                 drawer.prevPosition = drawer.rb.transform.position;
+                drawer.pointsV2List.Add(drawer.prevPosition);
                 handMovement.RefreshRot();
+                drawer.rotations.Add(handMovement.currentAngle);
             }
 
             return;
