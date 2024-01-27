@@ -62,6 +62,7 @@ public class ComebackTest : MonoBehaviour
                     col.enabled = true;
 
                 drawer.prevPosition = drawer.rb.transform.position;
+                drawer.pointsV2List.Add(drawer.prevPosition);
                 handMovement.RefreshRot();
             }
 

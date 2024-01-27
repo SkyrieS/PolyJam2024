@@ -28,6 +28,7 @@ public class HandLineDrawer : MonoBehaviour
     private void Start()
     {
         prevPosition = rb.transform.position;
+        pointsV2List.Add(prevPosition);
     }
 
     private void Update()
