@@ -5,59 +5,78 @@ using System.Linq;
 
 public class ComebackTest : MonoBehaviour
 {
-    public List<Vector3> line;
+    public PlayerHandMovement handMovement;
+    public HandLineDrawer drawer;
+
     public Rigidbody2D rb;
-    public float speed = 1f;
     public float rotationSpeed = 2f;
     public float threshold;
     public float moveVal;
+    public float maxLenght;
 
-    public Queue<Vector3> positions = new Queue<Vector3>();
+    public Stack<Vector3> positions = new Stack<Vector3>();
+    public Stack<float> rotations = new Stack<float>();
 
     [ContextMenu("Begin")]
     public void Begin()
     {
-        foreach (var lin in line)
-            positions.Enqueue(lin);
+        foreach (var lin in drawer.pointsV2List)
+            positions.Push(lin);
+
+        foreach (var rot in drawer.rotations)
+            rotations.Push(rot);
+            
+
+        drawer.comingBack = true;
+        handMovement.comingBack = true;
     }
 
-    private void Start()
+    private void Update()
     {
-        
+        if (positions.Count == 0 && drawer.totalDistance > maxLenght)
+        {
+            drawer.totalDistance = 0;
+            Begin();
+        }
+
+        if (positions.Count == 0)
+            return;
+
+        float distance = Vector3.Distance(rb.transform.position, positions.Peek());
+        if (distance < threshold)
+        {
+            positions.Pop();
+            rotations.Pop();
+            if (drawer.pointsV2List.Count > 0)
+                drawer.pointsV2List.RemoveAt(drawer.pointsV2List.Count - 1);
+
+            if (positions.Count == 0)
+            {
+                drawer.comingBack = false;
+                handMovement.comingBack = false;
+                drawer.prevPosition = drawer.rb.transform.position;
+                handMovement.RefreshRot();
+            }
+
+            return;
+        }
+
+        targetPos = Vector3.Lerp(rb.transform.position, positions.Peek(), moveVal * Time.deltaTime);
+
+        Quaternion savedRot = Quaternion.Euler(0f, 0f, rotations.Peek());
+        currentRot = Quaternion.Lerp(rb.transform.rotation, savedRot, rotationSpeed * Time.deltaTime);
+
     }
+
+    Vector3 targetPos;
+    Quaternion currentRot;
 
     public void FixedUpdate()
     {
         if (positions.Count == 0)
             return;
 
-        float distance = Vector3.Distance(rb.transform.position, positions.Peek());
-        if(distance < threshold)
-        {
-            positions.Dequeue();
-            return;
-        }
-
-        float normalized = moveVal / distance;
-
-        Vector3 targetPos = Vector3.Lerp(rb.transform.position, positions.Peek(), normalized * Time.deltaTime);
-        Vector3 dir = targetPos - rb.transform.position;
-        Quaternion targetRot = Quaternion.LookRotation(dir);
-        Quaternion currentRot = Quaternion.Lerp(rb.transform.rotation, targetRot, Time.deltaTime * rotationSpeed);
-
         rb.MovePosition(targetPos);
         rb.MoveRotation(currentRot);
-
-        //if((rb.transform.position - targetPos).magnitude < threshold)
-            //positions.Dequeue();
-    }
-
-    private void OnDrawGizmos()
-    {
-        for(int i = 1; i < line.Count; i++)
-        {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawLine(line[i - 1], line[i]);
-        }
     }
 }

@@ -54,6 +54,36 @@ public class ColliderSetup
         return wall.transform.TransformPoint(new Vector2(x, y));
     }
 
+    public List<ReceiveZone> GenerateSlotsZones(ReceiveZone zone, Transform parent)
+    {
+        List<ReceiveZone> zones = new List<ReceiveZone>();
+        foreach (var slots in slotsPosition)
+        {
+            ReceiveZone newZone = GameObject.Instantiate(zone, parent);
+            newZone.transform.position = GetPosition(slots);
+
+            switch (type) 
+            {
+                case WallType.Top:
+                    newZone.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                    break;
+                case WallType.Bottom:
+                    newZone.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
+                    break;
+                case WallType.Right:
+                    newZone.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90));
+                    break;
+                case WallType.Left:
+                    newZone.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+                    break;
+            }
+
+
+            zones.Add(newZone);
+        }
+        return zones;
+    }
+
     public void DrawGizmos()
     {
         foreach (var pos in slotsPosition)

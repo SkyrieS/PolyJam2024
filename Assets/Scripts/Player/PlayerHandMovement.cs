@@ -15,7 +15,20 @@ public class PlayerHandMovement : MonoBehaviour
     private Vector2 _hitVelocity;
     private Quaternion _rotationTarget;
 
+    private float currentAngle;
+    public bool comingBack;
+
     public Rigidbody2D PlayerRigidbody2D { get { return playerRigidbody2D; } }
+
+    private void Start()
+    {
+        RefreshRot();
+    }
+
+    public void RefreshRot()
+    {
+        currentAngle = PlayerRigidbody2D.transform.rotation.eulerAngles.z;
+    }
 
     public void UpdateMovement(Vector2 movement)
     {   
@@ -27,31 +40,49 @@ public class PlayerHandMovement : MonoBehaviour
         _hitVelocity = direction;
     }
 
+    private void FixedUpdate()
+    {
+        if (comingBack)
+            return;
+
+        currentAngle -= rotationSpeed * Time.deltaTime * _movement.x;
+        //currentAngle = Mathf.Clamp(currentAngle, -70f, 70f);
+        PlayerRigidbody2D.MoveRotation(currentAngle);
+
+        _movement.y = Mathf.Clamp01(_movement.y);
+        playerRigidbody2D.MovePosition(transform.position + (transform.right * _movement.y * acceleration * Time.deltaTime));
+        //PlayerRigidbody2D.AddForce(transform.up * _movement.y * acceleration * Time.deltaTime, ForceMode2D.Force);
+    }
+
     private void Update()
     {
-        Vector2 direction = _movement.normalized;
+        
 
-        Vector2 _velocity = playerRigidbody2D.velocity;
-        _velocity += direction * acceleration * Time.deltaTime;
-        _velocity = Vector2.ClampMagnitude(_velocity, maxSpeed);
 
-        if (direction == Vector2.zero)
-        {
-            _velocity = Vector2.Lerp(_velocity, Vector2.zero, deceleration * Time.deltaTime);
-        }
-        else
-        {
-            _rotationTarget = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90, Vector3.forward);
-        }
 
-        if (_hitVelocity != Vector2.zero)
-        {
-            _velocity += _hitVelocity;
-            _hitVelocity = Vector2.zero;
-        }
+        //Vector2 direction = _movement.normalized;
 
-        playerRigidbody2D.velocity = _velocity;
-        RotatePlayerSprite();
+       // Vector2 _velocity = playerRigidbody2D.velocity;
+        //_velocity += direction * acceleration * Time.deltaTime;
+       // _velocity = Vector2.ClampMagnitude(_velocity, maxSpeed);
+
+        //if (direction == Vector2.zero)
+       // {
+            //_velocity = Vector2.Lerp(_velocity, Vector2.zero, deceleration * Time.deltaTime);
+        //}
+       // else
+       // {
+            //_rotationTarget = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90, Vector3.forward);
+        //}
+
+        //if (_hitVelocity != Vector2.zero)
+        //{
+           // _velocity += _hitVelocity;
+            //_hitVelocity = Vector2.zero;
+        //}
+
+        //playerRigidbody2D.velocity = _velocity;
+        //RotatePlayerSprite();
     }
 
     private void RotatePlayerSprite()
