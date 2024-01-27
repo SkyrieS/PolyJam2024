@@ -8,6 +8,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1396836598563030887, guid: bf25b355a6b9ea248a6ad77ba14959e8, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396836598563030887, guid: bf25b355a6b9ea248a6ad77ba14959e8, type: 3}
+      propertyPath: m_Color.g
+      value: 0.15686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396836598563030887, guid: bf25b355a6b9ea248a6ad77ba14959e8, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186794992113251958, guid: bf25b355a6b9ea248a6ad77ba14959e8, type: 3}
+      propertyPath: colorGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186794992113251958, guid: bf25b355a6b9ea248a6ad77ba14959e8, type: 3}
+      propertyPath: colorGradient.key0.g
+      value: 0.15686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186794992113251958, guid: bf25b355a6b9ea248a6ad77ba14959e8, type: 3}
+      propertyPath: colorGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186794992113251958, guid: bf25b355a6b9ea248a6ad77ba14959e8, type: 3}
+      propertyPath: colorGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186794992113251958, guid: bf25b355a6b9ea248a6ad77ba14959e8, type: 3}
+      propertyPath: colorGradient.key1.g
+      value: 0.105068445
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186794992113251958, guid: bf25b355a6b9ea248a6ad77ba14959e8, type: 3}
+      propertyPath: colorGradient.key1.r
+      value: 0.6698113
+      objectReference: {fileID: 0}
     - target: {fileID: 2481412229189475623, guid: bf25b355a6b9ea248a6ad77ba14959e8, type: 3}
       propertyPath: colorGradient.ctime0
       value: 0
@@ -155,6 +191,10 @@ PrefabInstance:
     - target: {fileID: 7923992659333471630, guid: bf25b355a6b9ea248a6ad77ba14959e8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.9850006
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636481249806780364, guid: bf25b355a6b9ea248a6ad77ba14959e8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
