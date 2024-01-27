@@ -60,7 +60,7 @@ public class HandLineDrawer : MonoBehaviour
         sleeve.color = color;
 
         foreach (var trail in trails)
-            trail.endColor = color;
+            trail.startColor = color;
     }
 
     public void UpdateLine()
