@@ -10,6 +10,9 @@ namespace Game.Items
         [SerializeField] private Rigidbody2D itemRigidbody2D;
         [SerializeField] private Collider2D itemCollider;
 
+        private int item_id;
+        public int Item_id { get { return item_id; } set {  item_id = value; } }
+
         [Header("Tesing")]
         public Vector3 someForce;
         public float torque;
@@ -18,6 +21,11 @@ namespace Game.Items
         public Rigidbody2D Rigidbody2D => itemRigidbody2D;
 
         public List<PlayerTag> currentTags;
+
+        private void OnDestroy()
+        {
+            StopAllCoroutines();
+        }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
@@ -36,12 +44,12 @@ namespace Game.Items
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
-                AddForce();
+                AddForce(someForce, torque);
         }
 
-        public void AddForce()
+        public void AddForce(Vector2 force, float torque)
         {
-            itemRigidbody2D.AddForce(someForce, ForceMode2D.Impulse);
+            itemRigidbody2D.AddForce(force, ForceMode2D.Impulse);
             itemRigidbody2D.AddTorque(torque, ForceMode2D.Impulse);
         }
     }

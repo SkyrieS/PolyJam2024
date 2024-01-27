@@ -20,7 +20,7 @@ public class SneezeReceiverSkill : BaseReceiveSkill
     {
         startTime = Time.time;
         startPosition = transform.position;
-        transform.rotation = Quaternion.Euler(0f, 0f, Random.Range(-angle / 2f, angle / 2f));
+        transform.rotation = Quaternion.Euler(0f, 0f, Random.Range(-angle / 2f, angle / 2f)) * transform.parent.rotation;
         targetPosition = transform.position + (-transform.up * distance);
         effector.transform.position = startPosition;
         effector.gameObject.SetActive(true);
