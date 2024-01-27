@@ -23,6 +23,8 @@ public class PlayerHandMovement : MonoBehaviour
     private void Start()
     {
         RefreshRot();
+        Debug.Log(playerRigidbody2D.centerOfMass);
+        playerRigidbody2D.centerOfMass = Vector2.zero;
     }
 
     public void RefreshRot()
