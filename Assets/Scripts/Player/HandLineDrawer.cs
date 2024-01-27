@@ -11,6 +11,7 @@ public class HandLineDrawer : MonoBehaviour
 
     [SerializeField] private Gradient colorGradient;
     [SerializeField] private SpriteRenderer sleeve;
+    [SerializeField] private List<TrailRenderer> trails;
     [SerializeField] private AnimationCurve colorCurve;
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private PolygonCollider2D polygonCollider;
@@ -29,6 +30,7 @@ public class HandLineDrawer : MonoBehaviour
     {
         prevPosition = rb.transform.position;
         pointsV2List.Add(prevPosition);
+        rotations.Add(rb.transform.rotation.eulerAngles.z);
     }
 
     private void Update()
@@ -56,6 +58,9 @@ public class HandLineDrawer : MonoBehaviour
         lineRenderer.startColor = colorGradient.Evaluate(0f);
         color.a = 1f;
         sleeve.color = color;
+
+        foreach (var trail in trails)
+            trail.endColor = color;
     }
 
     public void UpdateLine()
