@@ -8,6 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 29732858123269125, guid: 1ce170e0fac47435484f22a4ad4b3539, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.495
+      objectReference: {fileID: 0}
+    - target: {fileID: 359765207748887191, guid: 1ce170e0fac47435484f22a4ad4b3539, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359765207748887191, guid: 1ce170e0fac47435484f22a4ad4b3539, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.171
+      objectReference: {fileID: 0}
     - target: {fileID: 359765207748887191, guid: 1ce170e0fac47435484f22a4ad4b3539, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
@@ -35,6 +47,22 @@ PrefabInstance:
     - target: {fileID: 3204468532209849815, guid: 1ce170e0fac47435484f22a4ad4b3539, type: 3}
       propertyPath: m_Name
       value: Hand_Right Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354413353698301414, guid: 1ce170e0fac47435484f22a4ad4b3539, type: 3}
+      propertyPath: m_Positions.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354413353698301414, guid: 1ce170e0fac47435484f22a4ad4b3539, type: 3}
+      propertyPath: m_Positions.Array.data[0].x
+      value: 6.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354413353698301414, guid: 1ce170e0fac47435484f22a4ad4b3539, type: 3}
+      propertyPath: m_Positions.Array.data[1].x
+      value: 6.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354413353698301414, guid: 1ce170e0fac47435484f22a4ad4b3539, type: 3}
+      propertyPath: m_Positions.Array.data[1].y
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 8780931257234910445, guid: 1ce170e0fac47435484f22a4ad4b3539, type: 3}
       propertyPath: m_LocalPosition.x
