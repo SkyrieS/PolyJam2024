@@ -5,6 +5,8 @@ namespace Game.Items
 {
 	public interface IPickable
 	{
+		Transform transform { get; }
+
         IPlayer ParentPlayer { get; }
         GameObject Object { get; }
 		Rigidbody2D Rigidbody2D { get; }
