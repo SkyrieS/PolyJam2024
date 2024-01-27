@@ -10,14 +10,17 @@ namespace Game.Player
 {
     public class Player : MonoBehaviour, IPlayer
     {
-        [SerializeField] private PlayerMovement playerMovement;
-        [SerializeField] private Transform leftItemParent;
-        [SerializeField] private Rigidbody2D leftHandRb;
-        [SerializeField] private Transform rightItemParent;
-        [SerializeField] private Rigidbody2D rightHandRb;
-        [SerializeField] private float freeHandAngularDrag = 1f;
-        [SerializeField] private float fullHandAngularDrag = 5f;
-        public PlayerMovement PlayerMovement { get { return playerMovement; } }
+        [SerializeField] private PlayerType player;
+        public PlayerType Type => player;
+
+        [SerializeField] private PlayerHandMovement playerLeftHandMovement;
+        [SerializeField] private PlayerHandMovement playerRightHandMovement;
+
+        [SerializeField] private PlayerClawMover playerLeftClawMover;
+        [SerializeField] private PlayerClawMover playerRightClawMover;
+
+        public PlayerHandMovement PlayerLeftHandMovement { get { return playerLeftHandMovement; } }
+        public PlayerHandMovement PlayerRightHandMovement { get { return playerRightHandMovement; } }
 
         private List<IPickable> itemsToPickup;
 
@@ -51,9 +54,19 @@ namespace Game.Player
             }
         }
 
+        public void CloseLeftHand(bool isClosing)
+        {
+            playerLeftClawMover.ToggleClosing(isClosing);
+        }
+
+        public void CloseRightHand(bool isClosing)
+        {
+            playerRightClawMover.ToggleClosing(isClosing);
+        }
+
         public void AddVelocityToPlayer(Vector2 direction)
         {
-            playerMovement.AddVelocity(direction);
+            //playerMovement.AddVelocity(direction);
         }
 
         public void AddItemToHand(IPickable item, HandType handType)
@@ -61,7 +74,6 @@ namespace Game.Player
             if (handType.Equals(HandType.Left) && leftHandItem == null)
             {
                 leftHandItem = item;
-                item.Object.transform.parent = leftItemParent;
                 item.Object.transform.localPosition = Vector3.zero;
                 item.Object.transform.localRotation = Quaternion.identity;
             }
@@ -69,7 +81,6 @@ namespace Game.Player
             if (handType.Equals(HandType.Right) && rightHandItem == null)
             {
                 rightHandItem = item;
-                item.Object.transform.parent = rightItemParent;
                 item.Object.transform.localPosition = Vector3.zero;
                 item.Object.transform.localRotation = Quaternion.identity;
             }
@@ -112,15 +123,6 @@ namespace Game.Player
             var firstItem = itemsToPickup.First();
             itemsToPickup.Remove(firstItem);
             firstItem.PickItem(this, handType);
-
-            if (handType.Equals(HandType.Left))
-            {
-                leftHandRb.angularDrag = fullHandAngularDrag;
-            }
-            else if (handType.Equals(HandType.Right))
-            {
-                rightHandRb.angularDrag = fullHandAngularDrag;
-            }
         }
 
         private void DropItem(HandType handType)
@@ -131,7 +133,6 @@ namespace Game.Player
                 leftHandItem.DropItem();
                 AddPlayerVelocityToItem(leftHandItem);
                 leftHandItem = null;
-                leftHandRb.angularDrag = freeHandAngularDrag;
             }
             else if (handType.Equals(HandType.Right))
             {
@@ -139,13 +140,12 @@ namespace Game.Player
                 rightHandItem.DropItem();
                 AddPlayerVelocityToItem(rightHandItem);
                 rightHandItem = null;
-                rightHandRb.angularDrag = freeHandAngularDrag;
             }
         }
 
         private void AddPlayerVelocityToItem(IPickable item)
         {
-            item.Rigidbody2D.velocity = playerMovement.PlayerRigidbody2D.velocity;
+            //item.Rigidbody2D.velocity = playerMovement.PlayerRigidbody2D.velocity;
         }
     }
 }

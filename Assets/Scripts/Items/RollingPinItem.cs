@@ -15,11 +15,11 @@ namespace Game.Items
         {
             if (IsHeld)
             {
-                if (collision.TryGetComponent(out IPlayer player) && player != ParentPlayer)
-                {
-                    Vector2 direction = (transform.position - collision.transform.position).normalized;
-                    player.AddVelocityToPlayer(-direction * hitStrenght);
-                }
+                //if (collision.TryGetComponent(out IPlayer player) && player != ParentPlayer)
+                //{
+                //    Vector2 direction = (transform.position - collision.transform.position).normalized;
+                //    player.AddVelocityToPlayer(-direction * hitStrenght);
+                //}
             }
         }
 
