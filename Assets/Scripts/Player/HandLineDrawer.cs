@@ -6,8 +6,12 @@ using System.Linq;
 
 public class HandLineDrawer : MonoBehaviour
 {
+    public ComebackTest comeback;
     public Rigidbody2D rb;
 
+    [SerializeField] private Gradient colorGradient;
+    [SerializeField] private SpriteRenderer sleeve;
+    [SerializeField] private AnimationCurve colorCurve;
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private PolygonCollider2D polygonCollider;
 
@@ -29,6 +33,7 @@ public class HandLineDrawer : MonoBehaviour
     private void Update()
     {
         UpdateLine();
+        UpdateSleeveColor();
 
         if (comingBack)
             return;
@@ -41,6 +46,15 @@ public class HandLineDrawer : MonoBehaviour
             rotations.Add(rb.transform.rotation.eulerAngles.z);
             prevPosition = rb.transform.position;
         }
+    }
+
+    public void UpdateSleeveColor()
+    {
+        var color = colorGradient.Evaluate(Mathf.InverseLerp(0f, comeback.maxLenght, totalDistance));
+        lineRenderer.endColor = color;
+        lineRenderer.startColor = colorGradient.Evaluate(0f);
+        color.a = 1f;
+        sleeve.color = color;
     }
 
     public void UpdateLine()
