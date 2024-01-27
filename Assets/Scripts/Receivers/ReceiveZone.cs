@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Game.Items;
 
 public class ReceiveZone : MonoBehaviour
 {
@@ -34,5 +35,17 @@ public class ReceiveZone : MonoBehaviour
         }
 
         currentTime += Time.deltaTime;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        BaseItem item = collision.transform.GetComponent<BaseItem>();
+        if(item != null)
+        {
+            foreach (var player in item.currentTags)
+                Debug.Log(player);
+
+            Destroy(item.gameObject);
+        }
     }
 }

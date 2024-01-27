@@ -5,34 +5,44 @@ using UnityEngine;
 
 namespace Game.Items
 {
-    public class BaseItem : MonoBehaviour, IPickable
+    public class BaseItem : MonoBehaviour
     {
         [SerializeField] private Rigidbody2D itemRigidbody2D;
         [SerializeField] private Collider2D itemCollider;
+
+        [Header("Tesing")]
+        public Vector3 someForce;
+        public float torque;
+
+        public Collider2D ItemCollider => itemCollider;
         public Rigidbody2D Rigidbody2D => itemRigidbody2D;
-        public GameObject Object => this.gameObject;
 
-        private bool isHeld;
-        public bool IsHeld => isHeld;
+        public List<PlayerTag> currentTags;
 
-        private IPlayer parentPlayer;
-        public IPlayer ParentPlayer => parentPlayer;
-
-        public virtual void PickItem(IPlayer player, HandType handType)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            itemRigidbody2D.bodyType = RigidbodyType2D.Kinematic;
-            itemCollider.enabled = false;
-            isHeld = true;
-            parentPlayer = player;
-            //player.AddItemToHand(this, handType);
+            PlayerTag tag = collision.transform.GetComponent<PlayerTag>();
+            if (tag != null && !currentTags.Contains(tag))
+                currentTags.Add(tag);
         }
 
-        public virtual void DropItem()
+        private void OnCollisionExit2D(Collision2D collision)
         {
-            itemRigidbody2D.bodyType = RigidbodyType2D.Dynamic;
-            itemCollider.enabled = true;
-            isHeld = false;
-            parentPlayer = null;
+            PlayerTag tag = collision.transform.GetComponent<PlayerTag>();
+            if (tag != null)
+                currentTags.Remove(tag);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+                AddForce();
+        }
+
+        public void AddForce()
+        {
+            itemRigidbody2D.AddForce(someForce, ForceMode2D.Impulse);
+            itemRigidbody2D.AddTorque(torque, ForceMode2D.Impulse);
         }
     }
 }
