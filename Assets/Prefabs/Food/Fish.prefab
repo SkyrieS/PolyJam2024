@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 8716664544435325435}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.17, y: 0.03, z: 0}
+  m_LocalPosition: {x: 0.31, y: 0.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1126,7 +1126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5005963704412984049, guid: b17a4b3a684ca4b4db8cb23d5601a98b, type: 3}
       propertyPath: m_AngularDrag
-      value: 5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5005963704412984049, guid: b17a4b3a684ca4b4db8cb23d5601a98b, type: 3}
       propertyPath: m_CollisionDetection

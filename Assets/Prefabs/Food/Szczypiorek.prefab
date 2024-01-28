@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 6876816591193145083}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.062, y: 0.027, z: 0}
+  m_LocalPosition: {x: 0.1, y: 0.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: -628639786, guid: c49d5d6652934734381a2ea43ddcc6c2, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5882353}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2439,6 +2439,14 @@ PrefabInstance:
     - target: {fileID: 3027009037532730049, guid: b17a4b3a684ca4b4db8cb23d5601a98b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005963704412984049, guid: b17a4b3a684ca4b4db8cb23d5601a98b, type: 3}
+      propertyPath: m_LinearDrag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005963704412984049, guid: b17a4b3a684ca4b4db8cb23d5601a98b, type: 3}
+      propertyPath: m_AngularDrag
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6699649310726851594, guid: b17a4b3a684ca4b4db8cb23d5601a98b, type: 3}
       propertyPath: m_Name
