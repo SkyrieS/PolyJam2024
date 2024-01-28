@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayersController playersController;
     [SerializeField] private ScreenTransition transition;
     [SerializeField] private GameObject startPanel;
+    [SerializeField] private GameObject firstPlayerPanel;
+    [SerializeField] private GameObject secondPlayerPanel;
+    [SerializeField] private GameObject drawPlayerPanel;
 
     private bool isRunning;
     private bool isEnded;
@@ -51,14 +54,26 @@ public class GameManager : MonoBehaviour
     }
 
     [ContextMenu("EndGame")]
-    public void EndGame()
+    public void EndGame(bool iWonImFirstPlayer, bool iWonImSecondPlayer)
     {
         transition.SetTarget(1f, () =>
         {
             spawner.StopSpawning();
             isRunning = false;
-            ResetGame();
+            if (iWonImFirstPlayer)
+            {
+                firstPlayerPanel.SetActive(true);
+            }
+            else if (iWonImSecondPlayer)
+            {
+                secondPlayerPanel.SetActive(true);
+            }
+            else
+            {
+                drawPlayerPanel.SetActive(true);
+            }
         });
+
         spawner.StopSpawning();
         isRunning = false;
         isEnded = true;
