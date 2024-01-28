@@ -11,6 +11,7 @@ public class PlayerClawMover : MonoBehaviour
     [SerializeField] private List<Collider2D> colliders;
     [SerializeField] private StompAnim stompAnimExample;
     [SerializeField] private ExploAnim exploAn;
+    [SerializeField] private PlayerTag tag;
     [SerializeField] private float raycastLenghth;
     [SerializeField] private float openAngle;
     [SerializeField] private float closedAngle;
@@ -99,6 +100,12 @@ public class PlayerClawMover : MonoBehaviour
                 float dist = dir.magnitude;
                 rb.rb.AddForce(Mathf.Lerp(0, explosionForce, Mathf.InverseLerp(0, explosionRadius, dist)) * dir, ForceMode2D.Impulse);
                 Debug.Log(Mathf.Lerp(0, explosionForce, Mathf.InverseLerp(0, explosionRadius, dist)) * dir);
+
+                BaseItem item = rb.rb.gameObject.GetComponent<BaseItem>();
+                if(item != null)
+                {
+                    item.currentTag = tag;
+                }
             }
         }
     }

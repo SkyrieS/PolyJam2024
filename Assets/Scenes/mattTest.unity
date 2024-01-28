@@ -546,11 +546,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9053718259302093787, guid: 8642a0843ea34d14b8bbc88246b3a31b, type: 3}
       propertyPath: m_LinearDrag
-      value: 45
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9053718259302093787, guid: 8642a0843ea34d14b8bbc88246b3a31b, type: 3}
       propertyPath: m_AngularDrag
-      value: 45
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

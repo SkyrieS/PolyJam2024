@@ -42,9 +42,6 @@ public class ReceiveZone : MonoBehaviour
         BaseItem item = collision.transform.GetComponent<BaseItem>();
         if(item != null)
         {
-            foreach (var player in item.currentTags)
-                Debug.Log(player);
-
             Destroy(item.gameObject);
         }
     }
