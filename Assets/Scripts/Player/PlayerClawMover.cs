@@ -99,8 +99,7 @@ public class PlayerClawMover : MonoBehaviour
                 Vector2 dir = (Vector2)rb.transform.position - (Vector2)transform.position;
                 float dist = dir.magnitude;
                 rb.rb.AddForce(Mathf.Lerp(0, explosionForce, Mathf.InverseLerp(0, explosionRadius, dist)) * dir, ForceMode2D.Impulse);
-                Debug.Log(Mathf.Lerp(0, explosionForce, Mathf.InverseLerp(0, explosionRadius, dist)) * dir);
-
+   
                 BaseItem item = rb.rb.gameObject.GetComponent<BaseItem>();
                 if(item != null)
                 {
