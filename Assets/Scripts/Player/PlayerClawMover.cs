@@ -175,7 +175,7 @@ public class PlayerClawMover : MonoBehaviour
     public void ToggleClosing(bool isClosing)
     {
         _isClosing = isClosing;
-        colliders[0].enabled = !isClosing;
+        colliders[0].enabled = !isClosing && !comingBack;
         if (!_isClosing && currentlyHolded != null)
             Drop();
 

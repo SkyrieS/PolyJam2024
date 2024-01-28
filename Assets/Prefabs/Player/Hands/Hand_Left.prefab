@@ -297,7 +297,7 @@ MonoBehaviour:
   openAngle: 20
   closedAngle: -20
   closingSpeed: 15
-  dropForce: 40
+  dropForce: 100
   explosionCooldown: 2
   explosionRadius: 10
   explosionForce: 120
