@@ -718,6 +718,7 @@ MonoBehaviour:
   firstPlayerPanel: {fileID: 0}
   secondPlayerPanel: {fileID: 0}
   drawPlayerPanel: {fileID: 0}
+  isEnded: 0
 --- !u!1001 &459189329687490763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -799,6 +800,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9171596570328146625}
     m_Modifications:
+    - target: {fileID: 126319832736720676, guid: 6c659808d3f0592408756f175310116b, type: 3}
+      propertyPath: randomForceRanges.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 126319832736720676, guid: 6c659808d3f0592408756f175310116b, type: 3}
+      propertyPath: randomForceRanges.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 126319832736720676, guid: 6c659808d3f0592408756f175310116b, type: 3}
+      propertyPath: randomSpawnTimeRanges.y
+      value: 7.5
+      objectReference: {fileID: 0}
     - target: {fileID: 126319832736720676, guid: 6c659808d3f0592408756f175310116b, type: 3}
       propertyPath: spawnPoints.Array.data[0].x
       value: -16
@@ -1028,6 +1041,10 @@ PrefabInstance:
       propertyPath: timer
       value: 
       objectReference: {fileID: 6055952525868945258}
+    - target: {fileID: 843029562998591905, guid: 38413b82a151eb34c86baf2c6dff4cc7, type: 3}
+      propertyPath: gameTime
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 843029562998591905, guid: 38413b82a151eb34c86baf2c6dff4cc7, type: 3}
       propertyPath: player1Score
       value: 
