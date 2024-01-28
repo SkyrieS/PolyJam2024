@@ -21,6 +21,7 @@ namespace Game.Items
         public Rigidbody2D Rigidbody2D => itemRigidbody2D;
 
         public List<PlayerTag> currentTags;
+        public PlayerTag lastTag;
 
         private void OnDestroy()
         {
@@ -32,6 +33,8 @@ namespace Game.Items
             PlayerTag tag = collision.transform.GetComponent<PlayerTag>();
             if (tag != null && !currentTags.Contains(tag))
                 currentTags.Add(tag);
+            if (tag != null)
+                lastTag = tag;
         }
 
         private void OnCollisionExit2D(Collision2D collision)

@@ -6,23 +6,17 @@ using static UnityEditor.Progress;
 
 public class ItemsSpawner : MonoBehaviour
 {
-    [SerializeField] private ItemsDatabase itemsDatabase;
+    [SerializeField] private SpawnedItemsContainer spawnedItemsContainer;
     [SerializeField] private Vector2 randomSpawnTimeRanges;
     [SerializeField] private Vector2 randomForceRanges;
     [SerializeField] private Vector2 randomTorgueRanges;
-    [SerializeField] private float angle;
     [SerializeField] private int maxItemCount;
-
     [SerializeField] private List<Vector2> spawnPoints;
 
     private float spawnTime;
-
-    private List<BaseItem> spawnedItems = new List<BaseItem>();
     private bool canSpawnItems;
+    public bool CanSpawnItems => canSpawnItems && spawnedItemsContainer.SpawnedItems.Count < maxItemCount;
 
-    public bool CanSpawnItems => canSpawnItems && spawnedItems.Count < maxItemCount;
-
-    [ContextMenu("sater")]
     public void StartSpawning()
     {
         canSpawnItems = true;
@@ -36,11 +30,7 @@ public class ItemsSpawner : MonoBehaviour
 
     public void Clear()
     {
-        foreach (var item in spawnedItems)
-        {
-            Destroy(item);
-        }
-        spawnedItems.Clear();
+        spawnedItemsContainer.Clear();
     }
 
     private void Update()
@@ -60,18 +50,18 @@ public class ItemsSpawner : MonoBehaviour
 
     private void SpawnItem()
     {
-        ItemData item = itemsDatabase.GetRandomItem();
+        ItemData item = spawnedItemsContainer.ItemsDatabase.GetRandomItem();
         Vector2 spawnPoint = GetRandomSpawnPoint();
         Vector2 direction = -spawnPoint.normalized;
         float randomForce = Random.Range(randomForceRanges.x, randomForceRanges.y);
         float randomTorque = Random.Range(randomForceRanges.x, randomForceRanges.y);
 
-        BaseItem itemObj = Instantiate(item.itemPrefab);
+        BaseItem itemObj = Instantiate(item.item_prefab);
         itemObj.transform.position = spawnPoint;
         itemObj.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg, Vector3.forward);
         itemObj.AddForce(direction * randomForce, randomTorque);
         itemObj.Item_id = item.item_id;
-        spawnedItems.Add(itemObj);
+        spawnedItemsContainer.AddItem(itemObj);
     }
 
     private Vector2 GetRandomSpawnPoint()

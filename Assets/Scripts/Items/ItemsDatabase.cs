@@ -20,5 +20,6 @@ public class ItemsDatabase : ScriptableObject
 public class ItemData
 {
     public int item_id;
-    public BaseItem itemPrefab;
+    public Sprite item_sprite;
+    public BaseItem item_prefab;
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Game.Score;
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -77,7 +78,6 @@ public class ColliderSetup
                     newZone.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
                     break;
             }
-
 
             zones.Add(newZone);
         }
