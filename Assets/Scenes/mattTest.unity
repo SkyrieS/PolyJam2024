@@ -496,6 +496,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 284151587837894936, guid: 8642a0843ea34d14b8bbc88246b3a31b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1359978305073877995, guid: 8642a0843ea34d14b8bbc88246b3a31b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.914223
@@ -539,6 +543,14 @@ PrefabInstance:
     - target: {fileID: 7216009274184633632, guid: 8642a0843ea34d14b8bbc88246b3a31b, type: 3}
       propertyPath: m_Name
       value: Fish
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053718259302093787, guid: 8642a0843ea34d14b8bbc88246b3a31b, type: 3}
+      propertyPath: m_LinearDrag
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053718259302093787, guid: 8642a0843ea34d14b8bbc88246b3a31b, type: 3}
+      propertyPath: m_AngularDrag
+      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -967,7 +979,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: d65428b54580c4337ab22ca59b4a0f73, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -9,15 +9,19 @@ public class PlayerClawMover : MonoBehaviour
     [SerializeField] private Transform clawTransform;
     [SerializeField] private Transform raycastPos;
     [SerializeField] private List<Collider2D> colliders;
+    [SerializeField] private StompAnim stompAnimExample;
+    [SerializeField] private ExploAnim exploAn;
     [SerializeField] private float raycastLenghth;
     [SerializeField] private float openAngle;
     [SerializeField] private float closedAngle;
     [SerializeField] private float closingSpeed;
     [SerializeField] private float dropForce;
+    [SerializeField] private float explosionCooldown;
 
     [SerializeField] private float explosionRadius;
     [SerializeField] private float explosionForce;
 
+    private float explosionProgress;
     private bool _isClosing;
     private float _currentAngle;
     private bool exploded = false;
@@ -34,8 +38,12 @@ public class PlayerClawMover : MonoBehaviour
 
     private void Update()
     {
+        exploAn.ProcessClock(explosionProgress / explosionCooldown);
+
         if (currentlyHolded != null)
             return;
+
+        HandleExplosion();
 
         if(_isClosing && currentlyHolded == null && !comingBack)
         {
@@ -46,11 +54,6 @@ public class PlayerClawMover : MonoBehaviour
         if (_isClosing)
         {
             angle = Mathf.Lerp(_currentAngle, closedAngle, Time.deltaTime * closingSpeed);
-            if(Mathf.Abs(angle - closedAngle) < 0.5f && !exploded)
-            {
-                //Explode();
-                exploded = true;
-            }
         }
         else
         {
@@ -62,16 +65,36 @@ public class PlayerClawMover : MonoBehaviour
         clawTransform.transform.localRotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
+    public void HandleExplosion()
+    {
+        if (exploded || !_isClosing)
+            return;
+
+        explosionProgress += Time.deltaTime;
+        float progress = explosionProgress / explosionCooldown;
+
+        if(progress >= 1f)
+        {
+            Explode();
+        }
+    }
+
     public void Explode()
     {
+        exploded = true;
+        explosionProgress = 0;
         Debug.Log("Explode");
+        var stomp = Instantiate(stompAnimExample);
+        stomp.SetTargetSize(new Vector3(explosionRadius, explosionRadius, explosionRadius));
+        stomp.transform.position = transform.position;
+        stomp.gameObject.SetActive(true);
+
         var colls = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         foreach(var col in colls)
         {
             RigibodyLinker rb = col.GetComponent<RigibodyLinker>();
             if(rb != null && rb != myRb)
             {
-                Debug.Log($"{col} and {rb}");
                 Vector2 dir = (Vector2)rb.transform.position - (Vector2)transform.position;
                 float dist = dir.magnitude;
                 rb.rb.AddForce(Mathf.Lerp(0, explosionForce, Mathf.InverseLerp(0, explosionRadius, dist)) * dir, ForceMode2D.Impulse);
@@ -82,7 +105,6 @@ public class PlayerClawMover : MonoBehaviour
 
     public void DetectItemGrab()
     {
-        Debug.Log("Detec");
         RaycastHit2D hit = Physics2D.Raycast(raycastPos.position, raycastPos.transform.up, raycastLenghth);
         
         if (hit.transform == null)
@@ -142,6 +164,13 @@ public class PlayerClawMover : MonoBehaviour
         colliders[0].enabled = !isClosing;
         if (!_isClosing && currentlyHolded != null)
             Drop();
+
+        if (!isClosing)
+        {
+            exploded = false;
+            explosionProgress = 0f;
+        }
+            
     }
 
     private void OnDrawGizmosSelected()
@@ -151,6 +180,25 @@ public class PlayerClawMover : MonoBehaviour
 
         Gizmos.color = Color.green;
         Gizmos.DrawRay(raycastPos.position, raycastPos.transform.up * raycastLenghth);
+    }
+}
 
+[System.Serializable]
+public class ExploAnim
+{
+    public SpriteRenderer rend;
+    public Vector3 startSize;
+    public Vector3 targetSize;
+    public Gradient gradient;
+    public float speed;
+
+    private float currentProcess;
+
+    public void ProcessClock(float targetProcess)
+    {
+        currentProcess = Mathf.Lerp(currentProcess, targetProcess, Time.deltaTime * speed);
+        Vector3 scale = Vector3.Lerp(startSize, targetSize, currentProcess);
+        rend.transform.localScale = scale;
+        rend.color = gradient.Evaluate(currentProcess);
     }
 }
