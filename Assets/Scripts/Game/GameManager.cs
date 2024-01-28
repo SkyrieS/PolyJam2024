@@ -13,8 +13,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ItemsSpawner spawner;
     [SerializeField] private PlayersController playersController;
     [SerializeField] private ScreenTransition transition;
+    [SerializeField] private GameObject startPanel;
 
     private bool isRunning;
+    private bool isEnded;
 
     public void Awake()
     {
@@ -29,11 +31,17 @@ public class GameManager : MonoBehaviour
         {
             StartGame();
         }
+        if (Input.GetKeyDown(KeyCode.Space) && isRunning && isEnded)
+        {
+            ResetGame();
+        }
     }
 
     [ContextMenu("Start")]
     public void StartGame()
     {
+        isEnded = false;
+        startPanel.SetActive(false);
         transition.SetTarget(0f, null);
         scoreManager.CreateScores();
         receiveManager.SpawnReceivers();
@@ -53,6 +61,7 @@ public class GameManager : MonoBehaviour
         });
         spawner.StopSpawning();
         isRunning = false;
+        isEnded = true;
     }
 
     public void ResetGame()

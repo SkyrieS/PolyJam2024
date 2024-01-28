@@ -713,6 +713,7 @@ MonoBehaviour:
   receiveManager: {fileID: 3615943687367799726}
   spawner: {fileID: 1619290712989336063}
   playersController: {fileID: 5804913426472087664}
+  transition: {fileID: 0}
 --- !u!1001 &459189329687490763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -794,6 +795,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9171596570328146625}
     m_Modifications:
+    - target: {fileID: 126319832736720676, guid: 6c659808d3f0592408756f175310116b, type: 3}
+      propertyPath: spawnPoints.Array.data[0].x
+      value: -16
+      objectReference: {fileID: 0}
+    - target: {fileID: 126319832736720676, guid: 6c659808d3f0592408756f175310116b, type: 3}
+      propertyPath: spawnPoints.Array.data[1].x
+      value: -16
+      objectReference: {fileID: 0}
+    - target: {fileID: 126319832736720676, guid: 6c659808d3f0592408756f175310116b, type: 3}
+      propertyPath: spawnPoints.Array.data[2].x
+      value: -16
+      objectReference: {fileID: 0}
+    - target: {fileID: 126319832736720676, guid: 6c659808d3f0592408756f175310116b, type: 3}
+      propertyPath: spawnPoints.Array.data[3].x
+      value: -16
+      objectReference: {fileID: 0}
+    - target: {fileID: 126319832736720676, guid: 6c659808d3f0592408756f175310116b, type: 3}
+      propertyPath: spawnPoints.Array.data[4].x
+      value: -16
+      objectReference: {fileID: 0}
+    - target: {fileID: 126319832736720676, guid: 6c659808d3f0592408756f175310116b, type: 3}
+      propertyPath: spawnPoints.Array.data[5].x
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 126319832736720676, guid: 6c659808d3f0592408756f175310116b, type: 3}
+      propertyPath: spawnPoints.Array.data[6].x
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 126319832736720676, guid: 6c659808d3f0592408756f175310116b, type: 3}
+      propertyPath: spawnPoints.Array.data[7].x
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 126319832736720676, guid: 6c659808d3f0592408756f175310116b, type: 3}
+      propertyPath: spawnPoints.Array.data[8].x
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 126319832736720676, guid: 6c659808d3f0592408756f175310116b, type: 3}
+      propertyPath: spawnPoints.Array.data[9].x
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 1647329646093968146, guid: 6c659808d3f0592408756f175310116b, type: 3}
       propertyPath: m_Name
       value: FoodSpawner

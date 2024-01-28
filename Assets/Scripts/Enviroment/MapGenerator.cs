@@ -12,7 +12,7 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private float cameraSize;
     [SerializeField, Range(0f, 3f)] private float wallThickness;
 
-    private Vector2Int AspectRatio => new Vector2Int(16, 10);
+    private Vector2Int AspectRatio => new Vector2Int(16, 9);
 
     public GameObject testOb;
 
