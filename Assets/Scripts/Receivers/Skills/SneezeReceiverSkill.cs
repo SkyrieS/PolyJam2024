@@ -5,6 +5,7 @@ using UnityEngine;
 public class SneezeReceiverSkill : BaseReceiveSkill
 {
     [SerializeField] private AreaEffector2D effector;
+    [SerializeField] private SpriteRenderer rend;
     [SerializeField] private float distance;
     [SerializeField] private float duration;
     [SerializeField] private float startForce;
@@ -34,6 +35,9 @@ public class SneezeReceiverSkill : BaseReceiveSkill
             effector.transform.position = Vector3.Lerp(startPosition, targetPosition, movementCurve.Evaluate(progress));
             effector.forceMagnitude = startForce * forceOverDistance.Evaluate(progress);
 
+            Color col = Color.white;
+            col.a = 1f - progress;
+            rend.color = col;
             if(progress >= 1f)
             {
                 effector.gameObject.SetActive(false);
