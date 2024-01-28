@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnedItemsContainer: {fileID: 4893013024697951909}
-  randomSpawnTimeRanges: {x: 10, y: 20}
-  randomForceRanges: {x: 5, y: 10}
-  randomTorgueRanges: {x: 1, y: 5}
-  maxItemCount: 20
+  randomSpawnTimeRanges: {x: 5, y: 10}
+  randomForceRanges: {x: 15, y: 30}
+  randomTorgueRanges: {x: 5, y: 10}
+  maxItemCount: 40
   spawnPoints:
   - {x: -17.5, y: 0}
   - {x: -17.5, y: 2}
