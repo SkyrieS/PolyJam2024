@@ -71,19 +71,7 @@ namespace Game.Player
 
         public void AddItemToHand(IPickable item, HandType handType)
         {
-            if (handType.Equals(HandType.Left) && leftHandItem == null)
-            {
-                leftHandItem = item;
-                item.Object.transform.localPosition = Vector3.zero;
-                item.Object.transform.localRotation = Quaternion.identity;
-            }
-
-            if (handType.Equals(HandType.Right) && rightHandItem == null)
-            {
-                rightHandItem = item;
-                item.Object.transform.localPosition = Vector3.zero;
-                item.Object.transform.localRotation = Quaternion.identity;
-            }
+            
         }
 
         public void PickOrDropItemLeftHand(InputAction.CallbackContext obj)
@@ -120,27 +108,12 @@ namespace Game.Player
 
         private void PickItem(HandType handType)
         {
-            var firstItem = itemsToPickup.First();
-            itemsToPickup.Remove(firstItem);
-            firstItem.PickItem(this, handType);
+            
         }
 
         private void DropItem(HandType handType)
         {
-            if (handType.Equals(HandType.Left))
-            {
-                leftHandItem.Object.transform.parent = null;
-                leftHandItem.DropItem();
-                AddPlayerVelocityToItem(leftHandItem);
-                leftHandItem = null;
-            }
-            else if (handType.Equals(HandType.Right))
-            {
-                rightHandItem.Object.transform.parent = null;
-                rightHandItem.DropItem();
-                AddPlayerVelocityToItem(rightHandItem);
-                rightHandItem = null;
-            }
+            
         }
 
         private void AddPlayerVelocityToItem(IPickable item)

@@ -48,8 +48,8 @@ public class PlayerHandMovement : MonoBehaviour
             return;
 
         currentAngle -= rotationSpeed * Time.deltaTime * _movement.x;
-        //currentAngle = Mathf.Clamp(currentAngle, -70f, 70f);
         PlayerRigidbody2D.MoveRotation(currentAngle);
+        //PlayerRigidbody2D.AddTorque(Time.deltaTime * _movement.x * rotationSpeed);
 
         _movement.y = Mathf.Clamp01(_movement.y);
         playerRigidbody2D.MovePosition(transform.position + (transform.right * _movement.y * acceleration * Time.deltaTime));
@@ -58,33 +58,7 @@ public class PlayerHandMovement : MonoBehaviour
 
     private void Update()
     {
-        
 
-
-
-        //Vector2 direction = _movement.normalized;
-
-       // Vector2 _velocity = playerRigidbody2D.velocity;
-        //_velocity += direction * acceleration * Time.deltaTime;
-       // _velocity = Vector2.ClampMagnitude(_velocity, maxSpeed);
-
-        //if (direction == Vector2.zero)
-       // {
-            //_velocity = Vector2.Lerp(_velocity, Vector2.zero, deceleration * Time.deltaTime);
-        //}
-       // else
-       // {
-            //_rotationTarget = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90, Vector3.forward);
-        //}
-
-        //if (_hitVelocity != Vector2.zero)
-        //{
-           // _velocity += _hitVelocity;
-            //_hitVelocity = Vector2.zero;
-        //}
-
-        //playerRigidbody2D.velocity = _velocity;
-        //RotatePlayerSprite();
     }
 
     private void RotatePlayerSprite()

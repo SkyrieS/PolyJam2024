@@ -16,7 +16,17 @@ namespace Game.Player
         private void Awake()
         {
             InitializeInputs();
+            DisableInput();
+        }
+
+        public void EnableInput()
+        {
             inputManager.ToggleInputs(true);
+        }
+
+        public void DisableInput()
+        {
+            inputManager.ToggleInputs(false);
         }
 
         private void InitializeInputs()

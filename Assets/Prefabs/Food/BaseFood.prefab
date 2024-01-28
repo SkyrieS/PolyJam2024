@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7409435394989228861}
   - component: {fileID: 5005963704412984049}
   - component: {fileID: 1328746291854040366}
+  - component: {fileID: 5514325823422092738}
+  - component: {fileID: 4263791621861236786}
   m_Layer: 0
   m_Name: BaseFood
   m_TagString: Untagged
@@ -101,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemRigidbody2D: {fileID: 5005963704412984049}
   itemCollider: {fileID: 1328746291854040366}
+  joint: {fileID: 4263791621861236786}
   someForce: {x: 0, y: 0, z: 0}
   torque: 0
   currentTags: []
@@ -181,3 +184,35 @@ PolygonCollider2D:
       - {x: 0.58778536, y: -0.80901694}
       - {x: 0.9510565, y: 0.30901712}
   m_UseDelaunayMesh: 0
+--- !u!114 &5514325823422092738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6699649310726851594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac213cadd2a24164ba59f7957d4d711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 5005963704412984049}
+--- !u!255 &4263791621861236786
+FixedJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6699649310726851594}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_DampingRatio: 0
+  m_Frequency: 0
