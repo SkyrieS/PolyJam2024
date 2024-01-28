@@ -141,9 +141,15 @@ public class PlayerClawMover : MonoBehaviour
         if (currentlyHolded == null)
             return;
 
-        currentlyHolded.Joint.connectedBody = null;
-        currentlyHolded.Joint.enabled = false;
+        if(currentlyHolded.Joint == null)
+        {
+            currentlyHolded = null;
+            return;
+        }
 
+        currentlyHolded.Joint.enabled = false;
+        currentlyHolded.Joint.connectedBody = null;
+        
         foreach (var col in colliders)
             col.enabled = false;
 
