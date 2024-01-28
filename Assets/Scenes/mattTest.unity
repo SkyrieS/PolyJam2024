@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsDatabase: {fileID: 11400000, guid: 21f018f6a43f173489ac62edeb022e86, type: 2}
-  randomSpawnTimeRanges: {x: 10, y: 20}
+  randomSpawnTimeRanges: {x: 1, y: 0}
   randomForceRanges: {x: 5, y: 10}
   randomTorgueRanges: {x: 1, y: 5}
   angle: 0
@@ -283,7 +283,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 390582377}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 30fffa4760b194372bac7ab8b0ae0201, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -452,7 +452,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1047614938}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 30fffa4760b194372bac7ab8b0ae0201, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -488,6 +488,63 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 38, y: 3}
   m_EdgeRadius: 0
+--- !u!1001 &1091838248
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1359978305073877995, guid: 8642a0843ea34d14b8bbc88246b3a31b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.914223
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359978305073877995, guid: 8642a0843ea34d14b8bbc88246b3a31b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359978305073877995, guid: 8642a0843ea34d14b8bbc88246b3a31b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359978305073877995, guid: 8642a0843ea34d14b8bbc88246b3a31b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8238266
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359978305073877995, guid: 8642a0843ea34d14b8bbc88246b3a31b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359978305073877995, guid: 8642a0843ea34d14b8bbc88246b3a31b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359978305073877995, guid: 8642a0843ea34d14b8bbc88246b3a31b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.56684196
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359978305073877995, guid: 8642a0843ea34d14b8bbc88246b3a31b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359978305073877995, guid: 8642a0843ea34d14b8bbc88246b3a31b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359978305073877995, guid: 8642a0843ea34d14b8bbc88246b3a31b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -69.061
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216009274184633632, guid: 8642a0843ea34d14b8bbc88246b3a31b, type: 3}
+      propertyPath: m_Name
+      value: Fish
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8642a0843ea34d14b8bbc88246b3a31b, type: 3}
 --- !u!1 &1121400730
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,7 +840,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1280842778}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 30fffa4760b194372bac7ab8b0ae0201, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -983,7 +1040,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1985111238}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 30fffa4760b194372bac7ab8b0ae0201, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1044,3 +1101,4 @@ SceneRoots:
   - {fileID: 309286171}
   - {fileID: 1121400731}
   - {fileID: 72008365}
+  - {fileID: 1091838248}

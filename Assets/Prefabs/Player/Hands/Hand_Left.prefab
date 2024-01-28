@@ -249,10 +249,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2898ea8842463944c931a024edd22cca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myRb: {fileID: 9172621748415034973}
   clawTransform: {fileID: 6390846714698970545}
-  openAngle: 20
+  raycastPos: {fileID: 3097144794714817442}
+  colliders:
+  - {fileID: 7743338177661747746}
+  - {fileID: 8409540227628039358}
+  raycastLenghth: 0.1
+  openAngle: 40
   closedAngle: -20
   closingSpeed: 15
+  dropForce: 15
+  explosionRadius: 3
+  explosionForce: 15
+  comingBack: 0
+  holderPrev: {fileID: 0}
 --- !u!114 &1179905655642856791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +381,37 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!1 &3819528558590986060
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3097144794714817442}
+  m_Layer: 3
+  m_Name: RaycastSender
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3097144794714817442
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3819528558590986060}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: -0.517131, w: 0.8559063}
+  m_LocalPosition: {x: -0.97, y: 2.34, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2202724731970281372}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -62.28}
 --- !u!1 &4240345789182538719
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,6 +660,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6390846714698970545}
   - component: {fileID: 7743338177661747746}
+  - component: {fileID: 4211274198084061542}
   m_Layer: 3
   m_Name: Anchor
   m_TagString: Untagged
@@ -702,6 +745,19 @@ PolygonCollider2D:
       - {x: 0.12446749, y: -0.044712186}
       - {x: -0.089497566, y: 0.5784464}
   m_UseDelaunayMesh: 0
+--- !u!114 &4211274198084061542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4576207336648013382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac213cadd2a24164ba59f7957d4d711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 9172621748415034973}
 --- !u!1 &5773504332797912617
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,6 +769,7 @@ GameObject:
   - component: {fileID: 5533379286387427479}
   - component: {fileID: 3473162891920929209}
   - component: {fileID: 8409540227628039358}
+  - component: {fileID: 1926018633638816696}
   m_Layer: 3
   m_Name: Base
   m_TagString: Untagged
@@ -974,6 +1031,19 @@ PolygonCollider2D:
       - {x: 1.3299999, y: -4.1349998}
       - {x: 1.37, y: -4.025}
   m_UseDelaunayMesh: 0
+--- !u!114 &1926018633638816696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5773504332797912617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac213cadd2a24164ba59f7957d4d711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 9172621748415034973}
 --- !u!1 &7601950470175338948
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,6 +1261,7 @@ MonoBehaviour:
   - {fileID: 7743338177661747746}
   handMovement: {fileID: 2344659691657412413}
   drawer: {fileID: 1179905655642856791}
+  claw: {fileID: 8665438264715981846}
   rb: {fileID: 9172621748415034973}
   rotationSpeed: 250
   threshold: 0.05
@@ -1228,6 +1299,7 @@ Transform:
   m_Children:
   - {fileID: 6506657386074441092}
   - {fileID: 6156214076094258972}
+  - {fileID: 3097144794714817442}
   m_Father: {fileID: 6390846714698970545}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3934950360350363475
