@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Game.Items;
 using UnityEngine;
 
@@ -90,7 +91,8 @@ public class PlayerClawMover : MonoBehaviour
         stomp.transform.position = transform.position;
         stomp.gameObject.SetActive(true);
 
-        var colls = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+        var colls = Physics2D.OverlapCircleAll(transform.position, explosionRadius).ToList();
+        Debug.Log(colls.RemoveAll(c => c.transform.tag == "Player"));
         foreach(var col in colls)
         {
             RigibodyLinker rb = col.GetComponent<RigibodyLinker>();
