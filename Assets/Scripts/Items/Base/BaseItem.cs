@@ -1,14 +1,17 @@
-using Game.Player;
-using System.Collections;
 using System.Collections.Generic;
+using Game.Player;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.Items
 {
-    public class BaseItem : MonoBehaviour
+    public class BaseItem : MonoBehaviour, IPickable
     {
         [SerializeField] private Rigidbody2D itemRigidbody2D;
         [SerializeField] private Collider2D itemCollider;
+        [SerializeField] private FixedJoint2D joint;
+
+        public FixedJoint2D Joint => joint;
 
         private int item_id;
         public int Item_id { get { return item_id; } set {  item_id = value; } }
@@ -19,6 +22,9 @@ namespace Game.Items
 
         public Collider2D ItemCollider => itemCollider;
         public Rigidbody2D Rigidbody2D => itemRigidbody2D;
+
+        public bool IsHeld { get; set; }
+        UnityAction IPickable.OnGrabbed { get; set; }
 
         public List<PlayerTag> currentTags;
         public PlayerTag lastTag;

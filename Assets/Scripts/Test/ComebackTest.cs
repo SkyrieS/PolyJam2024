@@ -8,6 +8,7 @@ public class ComebackTest : MonoBehaviour
     public List<Collider2D> collidersToDisable;
     public PlayerHandMovement handMovement;
     public HandLineDrawer drawer;
+    public PlayerClawMover claw;
 
     public Rigidbody2D rb;
     public float rotationSpeed = 2f;
@@ -30,9 +31,12 @@ public class ComebackTest : MonoBehaviour
 
         drawer.comingBack = true;
         handMovement.comingBack = true;
+        claw.comingBack = true;
 
         foreach (var col in collidersToDisable)
             col.enabled = false;
+
+        claw.Drop();
     }
 
     private void Update()
@@ -58,6 +62,7 @@ public class ComebackTest : MonoBehaviour
             {
                 drawer.comingBack = false;
                 handMovement.comingBack = false;
+                claw.comingBack = false;
                 foreach (var col in collidersToDisable)
                     col.enabled = true;
 
