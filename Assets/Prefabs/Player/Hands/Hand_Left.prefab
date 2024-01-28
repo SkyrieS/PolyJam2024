@@ -295,10 +295,10 @@ MonoBehaviour:
   openAngle: 20
   closedAngle: -20
   closingSpeed: 15
-  dropForce: 125
-  explosionCooldown: 3
-  explosionRadius: 3
-  explosionForce: 215
+  dropForce: 40
+  explosionCooldown: 2
+  explosionRadius: 10
+  explosionForce: 120
   comingBack: 0
   holderPrev: {fileID: 0}
 --- !u!114 &1179905655642856791
