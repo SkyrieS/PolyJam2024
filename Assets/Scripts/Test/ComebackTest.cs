@@ -50,6 +50,9 @@ public class ComebackTest : MonoBehaviour
         if (positions.Count == 0)
             return;
 
+        foreach (var col in collidersToDisable)
+            col.enabled = false;
+
         float distance = Vector3.Distance(rb.transform.position, positions.Peek());
         if (distance < threshold)
         {
