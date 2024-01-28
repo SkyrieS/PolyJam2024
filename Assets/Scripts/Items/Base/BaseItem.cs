@@ -26,8 +26,7 @@ namespace Game.Items
         public bool IsHeld { get; set; }
         UnityAction IPickable.OnGrabbed { get; set; }
 
-        public List<PlayerTag> currentTags;
-        public PlayerTag lastTag;
+        public PlayerTag currentTag;
 
         private void OnDestroy()
         {
@@ -36,18 +35,9 @@ namespace Game.Items
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            PlayerTag tag = collision.transform.GetComponent<PlayerTag>();
-            if (tag != null && !currentTags.Contains(tag))
-                currentTags.Add(tag);
-            if (tag != null)
-                lastTag = tag;
-        }
-
-        private void OnCollisionExit2D(Collision2D collision)
-        {
-            PlayerTag tag = collision.transform.GetComponent<PlayerTag>();
-            if (tag != null)
-                currentTags.Remove(tag);
+            Debug.Log("Collision", collision.rigidbody.gameObject);
+            Debug.Log(collision.transform.GetComponent<PlayerTag>());
+            currentTag = collision.transform.GetComponent<PlayerTag>();
         }
 
         private void Update()

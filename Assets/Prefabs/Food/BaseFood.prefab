@@ -107,6 +107,7 @@ MonoBehaviour:
   someForce: {x: 0, y: 0, z: 0}
   torque: 0
   currentTags: []
+  lastTag: {fileID: 0}
 --- !u!50 &5005963704412984049
 Rigidbody2D:
   serializedVersion: 4
@@ -204,7 +205,7 @@ FixedJoint2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6699649310726851594}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 0}
