@@ -878,7 +878,7 @@ MonoBehaviour:
   rend: {fileID: 4796390940656313788}
   distance: 10
   duration: 1
-  startForce: 25
+  startForce: 50
   angle: 45
   forceOverDistance:
     serializedVersion: 2
