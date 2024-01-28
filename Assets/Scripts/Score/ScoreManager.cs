@@ -85,8 +85,25 @@ namespace Game.Score
         public void GameWon()
         {
             Debug.Log("won");
+
             isPlaying = false;
-            gameManager.EndGame();
+
+            int firstPlayerScore = playersScores[PlayerType.PlayerOne];
+            int secondPlayerScore = playersScores[PlayerType.PlayerOne];
+
+            if (firstPlayerScore == secondPlayerScore)
+            {
+                gameManager.EndGame(false, false);
+            }
+            else if (firstPlayerScore > secondPlayerScore)
+            {
+                gameManager.EndGame(true, false);
+
+            }
+            else if(secondPlayerScore > firstPlayerScore)
+            {
+                gameManager.EndGame(false, true);
+            }
         }
 
         private void UpdateTimer(float seconds)
