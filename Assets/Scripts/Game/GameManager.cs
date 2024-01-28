@@ -43,7 +43,6 @@ public class GameManager : MonoBehaviour
     {
         spawner.StopSpawning();
         isRunning = false;
-        ResetGame();
     }
 
     public void ResetGame()

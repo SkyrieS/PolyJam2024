@@ -87,21 +87,11 @@ public class ReceiveZone : MonoBehaviour
         AddScoreByLastHit(item.currentTag);
     }
 
-    private void AddScoreRelativeToDistance(List<PlayerTag> closeByTags)
-    {
-        foreach (var tag in closeByTags)
-        {
-            scoreManager.IncreaseScoreByOne(tag.type);
-        }
-        scoreManager.CheckGameWon();
-    }
-
     private void AddScoreByLastHit(PlayerTag lastTag)
     {
         if (lastTag != null)
         {
             scoreManager.IncreaseScoreByOne(lastTag.type);
-            scoreManager.CheckGameWon();
         }
     }
 }

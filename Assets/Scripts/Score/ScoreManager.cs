@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using System;
 
 namespace Game.Score
 {
@@ -14,10 +15,30 @@ namespace Game.Score
         [SerializeField] private int scoreToWin;
         [SerializeField] private TextMeshProUGUI player1Score;
         [SerializeField] private TextMeshProUGUI player2Score;
+        [SerializeField] private TextMeshProUGUI timer;
+        [SerializeField] private float gameTime = 180;
 
         private Dictionary<PlayerType, int> playersScores;
-
         private GameManager gameManager;
+
+        private float currentTime;
+        private float startTime;
+        private bool isPlaying;
+
+        private void Update()
+        {
+            if (isPlaying)
+            {
+                if (currentTime >= startTime + gameTime)
+                {
+                    GameWon();
+                    UpdateTimer(0);
+                }
+
+                currentTime += Time.deltaTime;
+                UpdateTimer(startTime + gameTime - currentTime);
+            }
+        }
 
         public void Initialize(GameManager gameManager)
         {
@@ -26,6 +47,10 @@ namespace Game.Score
 
         public void CreateScores()
         {
+            startTime = Time.time;
+            currentTime = Time.time;
+            isPlaying = true;
+
             playersScores = new Dictionary<PlayerType, int>();
 
             playersScores.Add(PlayerType.None, 0);
@@ -57,27 +82,22 @@ namespace Game.Score
             player2Score.text = playersScores[PlayerType.PlayerTwo].ToString();
         }
 
-        public void CheckGameWon()
+        public void GameWon()
         {
-            List<PlayerType> winningPlayers = new List<PlayerType>();
-            foreach (var score in playersScores)
-            {
-                if (score.Value >= scoreToWin)
-                {
-                    winningPlayers.Add(score.Key);
-                }
-            }
+            Debug.Log("won");
+            isPlaying = false;
+            gameManager.EndGame();
+        }
 
-            for(int i = 0; i < winningPlayers.Count; i++)
-            {
-                string wonText = i == 0 ? $"{winningPlayers[i]} won!" : $"{winningPlayers[i]} also won! What a coincidence!";
-                Debug.Log(wonText);
-            }
+        private void UpdateTimer(float seconds)
+        {
+            int minutes = (int)(seconds / 60);
 
-            if(winningPlayers.Count > 0)
-            {
-                gameManager.EndGame();
-            }
+            int secondsLeft = (int)(seconds - (minutes * 60));
+            string minutesText = "0" + minutes;
+            string secondsString = secondsLeft < 10 ? "0" + secondsLeft : secondsLeft.ToString();
+
+            timer.text = $"{minutesText}:{secondsString}";
         }
     }
 
