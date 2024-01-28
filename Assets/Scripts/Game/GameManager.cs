@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ReceiveManager receiveManager;
     [SerializeField] private ItemsSpawner spawner;
     [SerializeField] private PlayersController playersController;
+    [SerializeField] private ScreenTransition transition;
 
     private bool isRunning;
 
@@ -30,8 +31,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [ContextMenu("Start")]
     public void StartGame()
     {
+        transition.SetTarget(0f, null);
         scoreManager.CreateScores();
         receiveManager.SpawnReceivers();
         spawner.StartSpawning();
@@ -39,11 +42,15 @@ public class GameManager : MonoBehaviour
         isRunning = true;
     }
 
+    [ContextMenu("EndGame")]
     public void EndGame()
     {
-        spawner.StopSpawning();
-        isRunning = false;
-        ResetGame();
+        transition.SetTarget(1f, () =>
+        {
+            spawner.StopSpawning();
+            isRunning = false;
+            ResetGame();
+        });
     }
 
     public void ResetGame()
