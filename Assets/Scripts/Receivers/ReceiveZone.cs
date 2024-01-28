@@ -40,6 +40,8 @@ public class ReceiveZone : MonoBehaviour
         foodRequested_id = itemData.item_id;
         foodObj.gameObject.SetActive(true);
         foodSprite.sprite = itemData.item_sprite;
+        foodSprite.transform.localScale = new Vector3(itemData.sprite_size, itemData.sprite_size, itemData.sprite_size);
+        foodSprite.transform.rotation = Quaternion.identity;
         hasRequest = true;
     }
 

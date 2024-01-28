@@ -13,7 +13,7 @@ namespace Game.Items
 
         public FixedJoint2D Joint => joint;
 
-        private int item_id;
+        private int item_id = -1;
         public int Item_id { get { return item_id; } set {  item_id = value; } }
 
         [Header("Tesing")]
