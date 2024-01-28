@@ -13,7 +13,7 @@ namespace Game.Items
 
         public FixedJoint2D Joint => joint;
 
-        private int item_id;
+        private int item_id = -1;   
         public int Item_id { get { return item_id; } set {  item_id = value; } }
 
         [Header("Tesing")]
@@ -35,9 +35,11 @@ namespace Game.Items
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            Debug.Log("Collision", collision.rigidbody.gameObject);
-            Debug.Log(collision.transform.GetComponent<PlayerTag>());
-            currentTag = collision.transform.GetComponent<PlayerTag>();
+            var tag = collision.transform.GetComponent<PlayerTag>();
+            if (tag != null)
+            {
+                currentTag = collision.transform.GetComponent<PlayerTag>();
+            }
         }
 
         private void Update()

@@ -71,6 +71,7 @@ public class ReceiveZone : MonoBehaviour
         {
             foodObj.gameObject.SetActive(false);
             hasRequest = false;
+            foodRequested_id = -1;
             RemoveItem(item);
         }
     }
@@ -97,7 +98,10 @@ public class ReceiveZone : MonoBehaviour
 
     private void AddScoreByLastHit(PlayerTag lastTag)
     {
-        scoreManager.IncreaseScoreByOne(lastTag.type);
-        scoreManager.CheckGameWon();
+        if (lastTag != null)
+        {
+            scoreManager.IncreaseScoreByOne(lastTag.type);
+            scoreManager.CheckGameWon();
+        }
     }
 }

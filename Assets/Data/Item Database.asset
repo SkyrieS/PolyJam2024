@@ -14,8 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - item_id: 0
-    itemPrefab: {fileID: 6777389134838858263, guid: 8642a0843ea34d14b8bbc88246b3a31b, type: 3}
+    sprite_size: 0.1
+    item_sprite: {fileID: 739704581, guid: e2e5f12f832e64be0a2e9909975aa330, type: 3}
+    item_prefab: {fileID: 6777389134838858263, guid: 8642a0843ea34d14b8bbc88246b3a31b, type: 3}
   - item_id: 1
-    itemPrefab: {fileID: 7517109518582215550, guid: 781658ee92d989e45ab789f1c84d4486, type: 3}
+    sprite_size: 0.25
+    item_sprite: {fileID: -628639786, guid: c49d5d6652934734381a2ea43ddcc6c2, type: 3}
+    item_prefab: {fileID: 8665726273891383024, guid: a0f82311437bc5f47a4d9b1f69bc6703, type: 3}
   - item_id: 2
-    itemPrefab: {fileID: 8665726273891383024, guid: a0f82311437bc5f47a4d9b1f69bc6703, type: 3}
+    sprite_size: 0.25
+    item_sprite: {fileID: 1625905020, guid: 02c19e1672db54aeca856a92f7a83f9b, type: 3}
+    item_prefab: {fileID: 7517109518582215550, guid: 781658ee92d989e45ab789f1c84d4486, type: 3}
+  - item_id: 3
+    sprite_size: 0.25
+    item_sprite: {fileID: 1441473148, guid: aad99eb75748247d088f4d3e01ff05df, type: 3}
+    item_prefab: {fileID: 5102280443748604768, guid: d62066459a9c14713852a29da1ae9ae0, type: 3}
+  - item_id: 4
+    sprite_size: 0.25
+    item_sprite: {fileID: -908662117, guid: 00a94e950fc024401a0d98d3d0e47284, type: 3}
+    item_prefab: {fileID: 1676827788634464788, guid: bd3b483bd99f44d4d8f3829d402f54e8, type: 3}

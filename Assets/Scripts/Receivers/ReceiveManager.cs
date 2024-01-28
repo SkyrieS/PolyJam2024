@@ -44,7 +44,7 @@ public class ReceiveManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
 
-        ReceiveZone zone = GetRandomEmptyZone();
+        ReceiveZone zone = GetRandomZone();
         ItemData itemData = spawnedItemsContainer.RequestItemData();
 
         if (zone != null && itemData != null)
@@ -55,19 +55,9 @@ public class ReceiveManager : MonoBehaviour
         requestFoodCoroutine = StartCoroutine(RequestFoodAfterTime(requestWaitTime));
     }
 
-    private ReceiveZone GetRandomEmptyZone()
+    private ReceiveZone GetRandomZone()
     {
-        List<ReceiveZone> emptyZones = new List<ReceiveZone>();
-        foreach(var zone in spawnedZones)
-        {
-            if (!zone.HasRequest)
-                emptyZones.Add(zone);
-        }
-
-        if (emptyZones.Count == 0)
-            return null;
-
-        int randomIndex = Random.Range(0, emptyZones.Count);
-        return emptyZones[randomIndex];
+        int randomIndex = Random.Range(0, spawnedZones.Count);
+        return spawnedZones[randomIndex];
     }
 }

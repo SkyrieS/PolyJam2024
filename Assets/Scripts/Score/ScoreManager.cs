@@ -5,12 +5,15 @@ using System.Xml;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 namespace Game.Score
 {
     public class ScoreManager : MonoBehaviour
     {
         [SerializeField] private int scoreToWin;
+        [SerializeField] private TextMeshProUGUI player1Score;
+        [SerializeField] private TextMeshProUGUI player2Score;
 
         private Dictionary<PlayerType, int> playersScores;
 
@@ -28,6 +31,7 @@ namespace Game.Score
             playersScores.Add(PlayerType.None, 0);
             playersScores.Add(PlayerType.PlayerOne, 0);
             playersScores.Add(PlayerType.PlayerTwo, 0);
+            UpdateUI();
         }
 
         public void IncreaseScoreByOne(PlayerType player)
@@ -37,12 +41,20 @@ namespace Game.Score
                 int currentScore = playersScores[player];
                 currentScore++;
                 playersScores[player] = currentScore;
+
                 Debug.Log($"Player {player} score is {currentScore}");
             }
             else
             {
                 playersScores.Add(player, 0);
             }
+            UpdateUI();
+        }
+
+        private void UpdateUI()
+        {
+            player1Score.text = playersScores[PlayerType.PlayerOne].ToString();
+            player2Score.text = playersScores[PlayerType.PlayerTwo].ToString();
         }
 
         public void CheckGameWon()

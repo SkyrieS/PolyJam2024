@@ -282,7 +282,6 @@ MonoBehaviour:
   - {fileID: 2106037426873493549}
   timeBetweenUsingSkills: 1
   timeVariation: 0
-  scoreType: 0
   foodSprite: {fileID: 4073234569363432877}
   foodObj: {fileID: 7407466721330189106}
 --- !u!58 &6842918016536829660
