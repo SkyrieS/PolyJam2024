@@ -60,21 +60,19 @@ public class GameManager : MonoBehaviour
         {
             spawner.StopSpawning();
             isRunning = false;
-            ResetGame();
+            if (iWonImFirstPlayer)
+            {
+                firstPlayerPanel.SetActive(true);
+            }
+            else if (iWonImSecondPlayer)
+            {
+                secondPlayerPanel.SetActive(true);
+            }
+            else
+            {
+                drawPlayerPanel.SetActive(true);
+            }
         });
-
-        if (iWonImFirstPlayer)
-        {
-            firstPlayerPanel.SetActive(true);
-        }
-        else if (iWonImSecondPlayer)
-        {
-            secondPlayerPanel.SetActive(true);
-        }
-        else 
-        {
-
-        }
 
         spawner.StopSpawning();
         isRunning = false;
