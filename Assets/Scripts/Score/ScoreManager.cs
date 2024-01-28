@@ -89,7 +89,7 @@ namespace Game.Score
             isPlaying = false;
 
             int firstPlayerScore = playersScores[PlayerType.PlayerOne];
-            int secondPlayerScore = playersScores[PlayerType.PlayerOne];
+            int secondPlayerScore = playersScores[PlayerType.PlayerTwo];
 
             gameManager.isEnded = true;
 
