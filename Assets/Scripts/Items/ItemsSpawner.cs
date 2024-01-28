@@ -20,7 +20,7 @@ public class ItemsSpawner : MonoBehaviour
     public void StartSpawning()
     {
         canSpawnItems = true;
-        spawnTime = Time.time + Random.Range(randomForceRanges.x, randomForceRanges.y);
+        spawnTime = Time.time + Random.Range(randomSpawnTimeRanges.x, randomSpawnTimeRanges.y);
     }
 
     public void StopSpawning()
@@ -59,7 +59,7 @@ public class ItemsSpawner : MonoBehaviour
         BaseItem itemObj = Instantiate(item.item_prefab);
         itemObj.transform.position = spawnPoint;
         itemObj.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg, Vector3.forward);
-        itemObj.AddForce(direction * randomForce, randomTorque);
+        itemObj.Rigidbody2D.velocity = direction * randomForce;
         itemObj.Item_id = item.item_id;
         spawnedItemsContainer.AddItem(itemObj);
     }

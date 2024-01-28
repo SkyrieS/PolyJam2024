@@ -91,11 +91,9 @@ namespace Game.Score
             int firstPlayerScore = playersScores[PlayerType.PlayerOne];
             int secondPlayerScore = playersScores[PlayerType.PlayerOne];
 
-            if (firstPlayerScore == secondPlayerScore)
-            {
-                gameManager.EndGame(false, false);
-            }
-            else if (firstPlayerScore > secondPlayerScore)
+            gameManager.isEnded = true;
+
+            if (firstPlayerScore > secondPlayerScore)
             {
                 gameManager.EndGame(true, false);
 
@@ -103,6 +101,10 @@ namespace Game.Score
             else if(secondPlayerScore > firstPlayerScore)
             {
                 gameManager.EndGame(false, true);
+            }
+            else
+            {
+                gameManager.EndGame(false, false);
             }
         }
 

@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject drawPlayerPanel;
 
     private bool isRunning;
-    private bool isEnded;
+    public bool isEnded;
 
     public void Awake()
     {
@@ -30,14 +30,15 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && !isRunning) 
-        {
-            StartGame();
-        }
-        if (Input.GetKeyDown(KeyCode.Space) && isRunning && isEnded)
+        if (Input.GetKeyDown(KeyCode.Space) && isEnded)
         {
             ResetGame();
         }
+        else if (Input.GetKeyDown(KeyCode.Space) && !isRunning) 
+        {
+            StartGame();
+        }
+
     }
 
     [ContextMenu("Start")]
@@ -59,7 +60,9 @@ public class GameManager : MonoBehaviour
         transition.SetTarget(1f, () =>
         {
             spawner.StopSpawning();
+            spawner.StopSpawning();
             isRunning = false;
+            isEnded = true;
             if (iWonImFirstPlayer)
             {
                 firstPlayerPanel.SetActive(true);
@@ -73,10 +76,6 @@ public class GameManager : MonoBehaviour
                 drawPlayerPanel.SetActive(true);
             }
         });
-
-        spawner.StopSpawning();
-        isRunning = false;
-        isEnded = true;
     }
 
     public void ResetGame()
