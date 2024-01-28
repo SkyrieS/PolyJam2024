@@ -10,7 +10,6 @@ public class ReceiveZone : MonoBehaviour
     [SerializeField] private List<BaseReceiveSkill> skills;
     [SerializeField] private float timeBetweenUsingSkills;
     [SerializeField] private float timeVariation;
-    [SerializeField] private ScoreType scoreType;
     [SerializeField] private SpriteRenderer foodSprite;
     [SerializeField] private GameObject foodObj;
 
@@ -70,9 +69,6 @@ public class ReceiveZone : MonoBehaviour
         BaseItem item = collision.transform.GetComponent<BaseItem>();
         if(item != null && item.Item_id == foodRequested_id)
         {
-            foreach (var player in item.currentTags)
-                Debug.Log(player);
-
             foodObj.gameObject.SetActive(false);
             hasRequest = false;
             RemoveItem(item);
@@ -87,15 +83,7 @@ public class ReceiveZone : MonoBehaviour
 
     private void AddScore(BaseItem item)
     {
-        switch (scoreType)
-        {
-            case ScoreType.RelativeToDistance:
-                AddScoreRelativeToDistance(item.currentTags);
-                break;
-            case ScoreType.LastHit:
-                AddScoreByLastHit(item.lastTag);
-                break;
-        }
+        AddScoreByLastHit(item.currentTag);
     }
 
     private void AddScoreRelativeToDistance(List<PlayerTag> closeByTags)
@@ -111,11 +99,5 @@ public class ReceiveZone : MonoBehaviour
     {
         scoreManager.IncreaseScoreByOne(lastTag.type);
         scoreManager.CheckGameWon();
-    }
-
-    public enum ScoreType
-    {
-        RelativeToDistance,
-        LastHit
     }
 }
